@@ -53,10 +53,6 @@ public class GuestbookWebPortlet extends MVCPortlet {
         long guestbookId = ParamUtil.getLong(request, "guestbookId");
         long entryId = ParamUtil.getLong(request, "entryId");
 
-        //===========================================================
-        //System.out.println("addEntry.guestbookId = " + guestbookId);
-        //===========================================================
-
         if (entryId > 0) {
 
             try {
@@ -143,15 +139,8 @@ public class GuestbookWebPortlet extends MVCPortlet {
                 guestbookId = guestbooks.get(0).getGuestbookId();
             }
 
-            //==========================
-            //System.out.println("groupId: " + groupId);
-            //System.out.println("guestbookId: " + guestbookId);
-            //==========================
-
             List<GuestbookEntry> entries = GuestbookEntryLocalServiceUtil.getGuestbookEntries(groupId,
                     guestbookId, 0, 10);
-
-            //System.out.println("size:   " + entries.size());
 
             renderRequest.setAttribute("guestbookId", guestbookId);
         } catch (Exception e) {
